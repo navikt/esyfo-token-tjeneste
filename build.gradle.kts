@@ -1,6 +1,9 @@
-val kotlin_version: String by project
-val logback_version: String by project
-val mockOauth2ServerVersion: String by project
+val junitJupiterVersion = "6.0.1"
+val kotlinVersion = "2.2.21"
+val logbackVersion = "1.5.19"
+val logstashVersion = "8.0"
+val maskinportenClientVersion = "0.3.0-SNAPSHOT"
+val mockOauth2ServerVersion = "3.0.1"
 
 plugins {
     kotlin("jvm") version "2.2.21"
@@ -31,21 +34,20 @@ repositories {
 }
 
 dependencies {
-    implementation("net.logstash.logback:logstash-logback-encoder:8.0")
-    implementation("ch.qos.logback:logback-classic:$logback_version")
+    implementation("net.logstash.logback:logstash-logback-encoder:$logstashVersion")
+    implementation("ch.qos.logback:logback-classic:$logbackVersion")
     implementation("io.ktor:ktor-client-apache5")
     implementation("io.ktor:ktor-server-auth-jvm")
     implementation("io.ktor:ktor-server-auth-jwt-jvm")
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-html-builder")
     implementation("io.ktor:ktor-server-netty-jvm")
-    implementation("io.github.cdimascio:dotenv-kotlin:6.4.2")
 
-    implementation("no.nav.helsearbeidsgiver:maskinporten-client:0.3.0-SNAPSHOT")
+    implementation("no.nav.helsearbeidsgiver:maskinporten-client:$maskinportenClientVersion")
 
     testImplementation("io.ktor:ktor-server-test-host-jvm")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:$kotlin_version")
-    testImplementation("org.junit.jupiter:junit-jupiter:6.0.1")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:$kotlinVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
     testImplementation("no.nav.security:mock-oauth2-server:$mockOauth2ServerVersion")
 }
 
