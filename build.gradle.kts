@@ -5,7 +5,7 @@ val mockOauth2ServerVersion: String by project
 plugins {
     kotlin("jvm") version "2.2.21"
     kotlin("plugin.serialization") version "2.2.21"
-    id("io.ktor.plugin") version "3.1.2"
+    id("io.ktor.plugin") version "3.3.2"
 }
 
 group = "no.nav.syfo"
