@@ -3,10 +3,9 @@ val logback_version: String by project
 val mockOauth2ServerVersion: String by project
 
 plugins {
-    kotlin("jvm") version "2.0.20"
-    kotlin("plugin.serialization") version "2.0.20"
-    id("io.ktor.plugin") version "2.3.12"
-    id("org.jmailen.kotlinter")
+    kotlin("jvm") version "2.2.21"
+    kotlin("plugin.serialization") version "2.2.21"
+    id("io.ktor.plugin") version "3.1.2"
 }
 
 group = "no.nav.syfo"
@@ -42,11 +41,11 @@ dependencies {
     implementation("io.ktor:ktor-server-netty-jvm")
     implementation("io.github.cdimascio:dotenv-kotlin:6.4.2")
 
-    implementation("no.nav.helsearbeidsgiver:maskinporten-client:0.2.1.1-SNAPSHOT")
+    implementation("no.nav.helsearbeidsgiver:maskinporten-client:0.3.0-SNAPSHOT")
 
     testImplementation("io.ktor:ktor-server-test-host-jvm")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:$kotlin_version")
+    testImplementation("org.junit.jupiter:junit-jupiter:6.0.1")
     testImplementation("no.nav.security:mock-oauth2-server:$mockOauth2ServerVersion")
 }
 
@@ -60,9 +59,9 @@ tasks.test {
 
 tasks.register("sjekkIngenPublicNais") {
     doLast {
-        val naisDir = file(".nais")
-        val file = naisDir.resolve("dev.yaml")
-        check(naisDir.listFiles()?.size == 1 && file.exists()) { ".nais må inneholde nøyaktig én fil kalt dev.yaml" }
+        val naisDir = file("nais")
+        val file = naisDir.resolve("nais-dev.yaml")
+        check(naisDir.listFiles()?.size == 1 && file.exists()) { "nais må inneholde nøyaktig én fil kalt nais-dev.yaml" }
         check(!file.readText().contains("ekstern.dev.nav.no")) { "Ikke tillat 'ekstern.dev.nav.no' i dev.yaml" }
     }
 }
