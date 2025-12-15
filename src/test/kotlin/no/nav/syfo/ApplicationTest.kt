@@ -18,6 +18,7 @@ class ApplicationTest {
         TestApplication {
             application {
                 tokenRouteMedClaim("systembruker", "nav:syfo/arkivporten")
+                tokenRouteMedClaim("systembruker", "nav:syfo/dokumentporten")
             }
         }
 

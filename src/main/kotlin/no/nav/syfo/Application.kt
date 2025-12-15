@@ -17,6 +17,7 @@ fun Application.module() {
     logger.info("Started App")
 
     tokenRouteMedClaim("systembruker", "nav:syfo/arkivporten")
+    tokenRouteMedClaim("systembruker", "nav:syfo/dokumentporten")
     tokenRouteMedClaim("dialogporten", "digdir:dialogporten")
     tokenRouteMedClaim("subscribe", "altinn:events.subscribe")
 
