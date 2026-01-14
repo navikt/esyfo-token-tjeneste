@@ -20,6 +20,7 @@ fun Application.module() {
     tokenRouteMedClaim("dialogporten", "digdir:dialogporten")
     tokenRouteMedClaim("subscribe", "altinn:events.subscribe")
 
+    tokenRouteUtenClaim("dialogporten", "digdir:dialogporten")
     tokenRouteUtenClaim("systemregister", "altinn:authentication/systemregister.write")
     tokenRouteUtenClaim(
         "systembruker-forespoersel",
