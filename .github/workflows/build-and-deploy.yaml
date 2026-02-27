@@ -5,7 +5,7 @@ on:
       - main
     types: [opened, synchronize, reopened, ready_for_review]
   merge_group:
-    types: [ checks_requested ]
+    types: [checks_requested]
   workflow_dispatch:
 
 jobs:
