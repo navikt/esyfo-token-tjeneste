@@ -1,6 +1,6 @@
-val kotlin_version: String by project
-val logback_version: String by project
-val mockOauth2ServerVersion: String by project
+val kotlinVersion = "2.3.20"
+val logbackVersion = "1.5.32"
+val mockOauth2ServerVersion = "3.0.1"
 val junitJupiterVersion = "6.0.3"
 val logstashVersion = "9.0"
 val maskinportenClientVersion = "0.3.0-SNAPSHOT"
@@ -43,6 +43,9 @@ dependencies {
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-html-builder")
     implementation("io.ktor:ktor-server-netty-jvm")
+    implementation("io.github.cdimascio:dotenv-kotlin:6.4.2")
+    implementation("io.ktor:ktor-client-content-negotiation")
+    implementation("io.ktor:ktor-serialization-kotlinx-json")
     implementation("io.github.cdimascio:dotenv-kotlin:6.4.2")
     implementation("io.ktor:ktor-client-content-negotiation")
     implementation("io.ktor:ktor-serialization-kotlinx-json")

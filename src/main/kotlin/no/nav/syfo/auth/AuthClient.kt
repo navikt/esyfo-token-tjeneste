@@ -1,4 +1,4 @@
-package no.nav.helsearbeidsgiver.auth
+package no.nav.syfo.auth
 
 import io.ktor.client.call.body
 import io.ktor.client.plugins.ResponseException
@@ -8,40 +8,38 @@ import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.parameters
 import kotlinx.coroutines.runBlocking
-import no.nav.hag.Env
-import no.nav.hag.auth.createHttpClient
+import no.nav.helsearbeidsgiver.auth.ErrorResponse
+import no.nav.helsearbeidsgiver.auth.TokenResponse
+import no.nav.syfo.Env
 
 class AuthClient {
     private val httpClient = createHttpClient()
 
-    fun tokenGetter(target: String): () -> String =
-        {
-            runBlocking {
-                token(target).accessToken
-            }
+    fun tokenGetter(target: String): () -> String = {
+        runBlocking {
+            token(target).accessToken
         }
+    }
 
-    private suspend fun token(target: String): TokenResponse =
-        try {
-            httpClient
-                .submitForm(
-                    url = Env.Nais.tokenEndpoint,
-                    formParameters =
-                        parameters {
-                            append("identity_provider", "maskinporten")
-                            append("target", target)
-                        },
-                ).body()
-        } catch (e: ResponseException) {
-            e.logAndRethrow()
-        }
-
-    suspend fun altinnExchange(token: String): String =
+    private suspend fun token(target: String): TokenResponse = try {
         httpClient
-            .get(Env.Altinn.tokenAltinn3ExchangeEndpoint) {
-                bearerAuth(token)
-            }.bodyAsText()
-            .replace("\"", "")
+            .submitForm(
+                url = Env.Nais.tokenEndpoint,
+                formParameters =
+                parameters {
+                    append("identity_provider", "maskinporten")
+                    append("target", target)
+                },
+            ).body()
+    } catch (e: ResponseException) {
+        e.logAndRethrow()
+    }
+
+    suspend fun altinnExchange(token: String): String = httpClient
+        .get(Env.Altinn.tokenAltinn3ExchangeEndpoint) {
+            bearerAuth(token)
+        }.bodyAsText()
+        .replace("\"", "")
 
     private suspend fun ResponseException.logAndRethrow(): Nothing {
         val error = response.body<ErrorResponse>()

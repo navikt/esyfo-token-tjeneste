@@ -22,7 +22,6 @@ object Env {
     }
 }
 
-fun String.fromEnv(): String =
-    System.getenv(this)
-        ?: appConfig.propertyOrNull(this)?.getString()
-        ?: throw RuntimeException("Missing required environment variable \"$this\".")
+fun String.fromEnv(): String = System.getenv(this)
+    ?: appConfig.propertyOrNull(this)?.getString()
+    ?: throw RuntimeException("Missing required environment variable \"$this\".")
