@@ -27,4 +27,5 @@ fun Application.module() {
         "systembruker-forespoersel",
         "altinn:authentication/systemuser.request.read altinn:authentication/systemuser.request.write",
     )
+    dialogportenTokenRoute(AuthClient().dialogportenTokenGetter())
 }
