@@ -43,10 +43,10 @@ dependencies {
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-html-builder")
     implementation("io.ktor:ktor-server-netty-jvm")
-    implementation("io.github.cdimascio:dotenv-kotlin:6.4.2")
+    implementation("io.github.cdimascio:dotenv-kotlin:6.5.1")
     implementation("io.ktor:ktor-client-content-negotiation")
     implementation("io.ktor:ktor-serialization-kotlinx-json")
-    implementation("io.github.cdimascio:dotenv-kotlin:6.4.2")
+    implementation("io.github.cdimascio:dotenv-kotlin:6.5.1")
     implementation("io.ktor:ktor-client-content-negotiation")
     implementation("io.ktor:ktor-serialization-kotlinx-json")
 
