@@ -1,13 +1,13 @@
 val kotlinVersion = "2.3.21"
-val logbackVersion = "1.5.32"
+val logbackVersion = "1.5.33"
 val mockOauth2ServerVersion = "3.0.3"
-val junitJupiterVersion = "6.0.3"
+val junitJupiterVersion = "6.1.0"
 val logstashVersion = "9.0"
 val maskinportenClientVersion = "0.3.0-SNAPSHOT"
 
 plugins {
     kotlin("jvm") version "2.3.21"
-    kotlin("plugin.serialization") version "2.2.21"
+    kotlin("plugin.serialization") version "2.3.21"
     id("io.ktor.plugin") version "3.5.0"
     id("org.jlleitschuh.gradle.ktlint") version "14.2.0"
 }
@@ -43,10 +43,10 @@ dependencies {
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-html-builder")
     implementation("io.ktor:ktor-server-netty-jvm")
-    implementation("io.github.cdimascio:dotenv-kotlin:6.4.2")
+    implementation("io.github.cdimascio:dotenv-kotlin:6.5.1")
     implementation("io.ktor:ktor-client-content-negotiation")
     implementation("io.ktor:ktor-serialization-kotlinx-json")
-    implementation("io.github.cdimascio:dotenv-kotlin:6.4.2")
+    implementation("io.github.cdimascio:dotenv-kotlin:6.5.1")
     implementation("io.ktor:ktor-client-content-negotiation")
     implementation("io.ktor:ktor-serialization-kotlinx-json")
 
