@@ -1,6 +1,6 @@
 val kotlinVersion = "2.4.0"
 val logbackVersion = "1.5.37"
-val mockOauth2ServerVersion = "4.0.0"
+val mockOauth2ServerVersion = "5.0.1"
 val junitJupiterVersion = "6.1.1"
 val logstashVersion = "9.0"
 val maskinportenClientVersion = "0.3.0-SNAPSHOT"
