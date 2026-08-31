@@ -1,4 +1,4 @@
-val kotlinVersion = "2.4.0"
+val kotlinVersion = "2.4.10"
 val logbackVersion = "1.5.37"
 val mockOauth2ServerVersion = "4.0.0"
 val junitJupiterVersion = "6.1.1"
@@ -8,7 +8,7 @@ val maskinportenClientVersion = "0.3.0-SNAPSHOT"
 plugins {
     kotlin("jvm") version "2.3.21"
     kotlin("plugin.serialization") version "2.4.10"
-    id("io.ktor.plugin") version "3.5.1"
+    id("io.ktor.plugin") version "3.5.2"
     id("org.jlleitschuh.gradle.ktlint") version "14.2.0"
 }
 
