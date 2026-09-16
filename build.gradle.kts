@@ -1,4 +1,7 @@
+import org.gradle.api.artifacts.dsl.DependencyConstraintHandler
+
 val kotlinVersion = "2.4.10"
+val ktorVersion = "3.5.2"
 val mockOauth2ServerVersion = "6.0.2"
 val logbackVersion = "1.6.3"
 val junitJupiterVersion = "6.1.3"
@@ -8,7 +11,7 @@ val maskinportenClientVersion = "0.3.0-SNAPSHOT"
 plugins {
     kotlin("jvm") version "2.4.10"
     kotlin("plugin.serialization") version "2.4.10"
-    id("io.ktor.plugin") version "3.5.2"
+    id("io.ktor.plugin") version ktorVersion
     id("org.jlleitschuh.gradle.ktlint") version "14.2.0"
 }
 
@@ -35,6 +38,13 @@ repositories {
 }
 
 dependencies {
+    constraints {
+        implementationWithKtorVersionCheck(
+            dependencyNotation = "io.netty:netty-handler:4.2.17.Final",
+            expectedKtorVersion = "3.5.2",
+        )
+    }
+
     implementation("net.logstash.logback:logstash-logback-encoder:$logstashVersion")
     implementation("ch.qos.logback:logback-classic:$logbackVersion")
     implementation("io.ktor:ktor-client-apache5")
@@ -56,6 +66,16 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:$kotlinVersion")
     testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
     testImplementation("no.nav.security:mock-oauth2-server:$mockOauth2ServerVersion")
+}
+
+fun DependencyConstraintHandler.implementationWithKtorVersionCheck(
+    dependencyNotation: String,
+    expectedKtorVersion: String,
+) {
+    check(ktorVersion == expectedKtorVersion) {
+        "Review the $dependencyNotation constraint before changing Ktor from $expectedKtorVersion to $ktorVersion"
+    }
+    add("implementation", dependencyNotation)
 }
 
 tasks.test {
