@@ -42,6 +42,7 @@ dependencies {
         implementationWithKtorVersionCheck(
             dependencyNotation = "io.netty:netty-handler:4.2.17.Final",
             expectedKtorVersion = "3.5.2",
+            currentKtorVersion = ktorVersion,
         )
     }
 
@@ -71,9 +72,10 @@ dependencies {
 fun DependencyConstraintHandler.implementationWithKtorVersionCheck(
     dependencyNotation: String,
     expectedKtorVersion: String,
+    currentKtorVersion: String,
 ) {
-    check(ktorVersion == expectedKtorVersion) {
-        "Review the $dependencyNotation constraint before changing Ktor from $expectedKtorVersion to $ktorVersion"
+    check(currentKtorVersion == expectedKtorVersion) {
+        "Review the $dependencyNotation constraint before changing Ktor from $expectedKtorVersion to $currentKtorVersion"
     }
     add("implementation", dependencyNotation)
 }
