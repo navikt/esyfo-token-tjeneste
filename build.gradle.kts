@@ -2,7 +2,7 @@ import org.gradle.api.artifacts.dsl.DependencyConstraintHandler
 
 val kotlinVersion = "2.4.21"
 val ktorVersion = "3.5.2"
-val mockOauth2ServerVersion = "6.0.4"
+val mockOauth2ServerVersion = "6.0.5"
 val logbackVersion = "1.6.5"
 val junitJupiterVersion = "6.1.3"
 val logstashVersion = "9.0"
