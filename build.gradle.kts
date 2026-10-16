@@ -10,7 +10,7 @@ val maskinportenClientVersion = "0.3.0-SNAPSHOT"
 
 plugins {
     kotlin("jvm") version "2.4.10"
-    kotlin("plugin.serialization") version "2.4.10"
+    kotlin("plugin.serialization") version "2.4.21"
     id("io.ktor.plugin") version "3.6.0"
     id("org.jlleitschuh.gradle.ktlint") version "14.2.0"
 }
